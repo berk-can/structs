@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"reflect"
+	"errors"
 )
 
 var (
@@ -20,10 +21,9 @@ type Struct struct {
 	raw     interface{}
 	value   reflect.Value
 	TagName string
-	//TEst
 }
 
-// New returns a new *Struct with the struct s. It panics if the s's kind is
+// New returns a new *Struct with the struct s. It panics if the s's kind isfrl
 // not struct.
 func New(s interface{}) *Struct {
 	return &Struct{
@@ -275,13 +275,14 @@ func getFields(v reflect.Value, tagName string) []*Field {
 
 // Field returns a new Field struct that provides several high level functions
 // around a single struct field entity. It panics if the field is not found.
-func (s *Struct) Field(name string) *Field {
+func (s *Struct) Field(name string) (*Field,error) {
+	var empty *Field
 	f, ok := s.FieldOk(name)
 	if !ok {
-		panic("field not found")
+		return empty,errors.New("No field as specified")
 	}
 
-	return f
+	return f,nil
 }
 
 // FieldOk returns a new Field struct that provides several high level functions
