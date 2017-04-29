@@ -21,6 +21,8 @@ type Struct struct {
 	value   reflect.Value
 	TagName string
 
+
+	//TEst
 }
 
 // New returns a new *Struct with the struct s. It panics if the s's kind is
