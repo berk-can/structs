@@ -20,8 +20,6 @@ type Struct struct {
 	raw     interface{}
 	value   reflect.Value
 	TagName string
-
-
 	//TEst
 }
 
