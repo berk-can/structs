@@ -20,6 +20,7 @@ type Struct struct {
 	raw     interface{}
 	value   reflect.Value
 	TagName string
+
 }
 
 // New returns a new *Struct with the struct s. It panics if the s's kind is
